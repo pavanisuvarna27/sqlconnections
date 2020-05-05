@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration Form</title>
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+<body>
+	<div class="container">
+			
+			{% if messages %}
+				{% for msg in messages %}
+					<div class="alert alert-{{ msg.tags}}">{{ msg }}</div>
+				{% endfor %}
+			{% endif %}
+			<form action="{% url 'register' %}" method="POST">
+				<div class="card">
+				<div class="card-header bg-primary">Registration Form</div>
+
+		    		<div class="card-body">
+	        
+		    			{% csrf_token %}
+		    			{{form.as_p}}
+		<!--<table>
+			<tr><td>Enter ID</td><td>{{form.stuid}}</td></tr>
+			<tr><td>Name</td><td>{{form.stuname}}</td></tr>
+			<tr><td>Branch</td><td>{{form.branch}}</td></tr>
+			<tr><td>Age</td><td>{{form.age}}</td></tr>
+		</table>-->
+	        		</div>
+					<div class="card-footer">
+						<input class='btn btn-primary' type="submit" name="submit" value="Save">
+	      
+        			</div>
+    			</div>
+    		    </div>
+            </form>
+            
+        </div>
+    </div>    
+</body>
+</html>
